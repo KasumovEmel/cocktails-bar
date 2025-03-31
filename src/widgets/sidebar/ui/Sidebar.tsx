@@ -1,9 +1,11 @@
-import {memo, useEffect, useRef} from 'react';
+import {memo, useCallback, useEffect, useRef} from 'react';
 
 import clsx from 'clsx';
-import {NavLink, useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 
 import {CONTENT_NAVIGATION_MENU} from 'shared/config/coctails-menu.config';
+import {useViewNavigate} from 'shared/lib/routing/useViewNavigate';
+import {CocktailCodeType} from 'shared/types/coctailsTypes';
 
 import styles from './styles.module.scss';
 
@@ -14,6 +16,16 @@ type SidebarProps = {
 export const Sidebar = memo(({contentRef}: SidebarProps) => {
   const location = useLocation();
   const previousPathRef = useRef(location.pathname);
+  const viewNavigate = useViewNavigate();
+
+  const onClickHandler = useCallback(
+    (path: CocktailCodeType) => () => {
+      if (location.pathname !== path) {
+        viewNavigate(path);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const prev = previousPathRef.current;
@@ -30,14 +42,14 @@ export const Sidebar = memo(({contentRef}: SidebarProps) => {
       <ul className={styles.menu}>
         {CONTENT_NAVIGATION_MENU.map(code => (
           <li key={code}>
-            <NavLink
-              className={({isActive}) =>
-                clsx(styles.link, {[styles.active]: isActive})
-              }
-              to={`/${code}`}
+            <button
+              className={clsx(styles.link, {
+                [styles.active]: location.pathname === code
+              })}
+              onClick={onClickHandler(code)}
             >
               {code}
-            </NavLink>
+            </button>
           </li>
         ))}
       </ul>
