@@ -44,7 +44,7 @@ export const Sidebar = memo(({contentRef}: SidebarProps) => {
           <li key={code}>
             <button
               className={clsx(styles.link, {
-                [styles.active]: location.pathname === code
+                [styles.active]: location.pathname === `/${code}`
               })}
               onClick={onClickHandler(code)}
             >
