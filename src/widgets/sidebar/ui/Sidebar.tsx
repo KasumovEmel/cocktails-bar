@@ -1,4 +1,4 @@
-import {memo, RefObject, useEffect, useRef} from 'react';
+import {memo, useEffect, useRef} from 'react';
 
 import clsx from 'clsx';
 import {NavLink, useLocation} from 'react-router-dom';
@@ -8,7 +8,7 @@ import {CONTENT_NAVIGATION_MENU} from 'shared/config/coctails-menu.config';
 import styles from './styles.module.scss';
 
 type SidebarProps = {
-  contentRef: RefObject<HTMLDivElement> | null;
+  contentRef: React.RefObject<HTMLDivElement | null>;
 };
 
 export const Sidebar = memo(({contentRef}: SidebarProps) => {
@@ -20,7 +20,7 @@ export const Sidebar = memo(({contentRef}: SidebarProps) => {
     const current = location.pathname;
 
     if (prev !== current) {
-      contentRef?.current.scrollTo({top: 0, behavior: 'smooth'});
+      contentRef.current?.scrollTo({top: 0, behavior: 'smooth'});
       previousPathRef.current = current;
     }
   }, [location.pathname, contentRef]);
