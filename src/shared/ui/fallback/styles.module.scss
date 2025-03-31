@@ -1,0 +1,52 @@
+@use '@/app/styles/variables/mixins' as *;
+
+.fallback {
+  align-items: center;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  justify-content: center;
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.img {
+  border-radius: var(--space-sm);
+  object-fit: cover;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: var(--font-xxl);
+  font-weight: 700;
+
+  @include mobile {
+    font-size: var(--font-xl);
+  }
+}
+
+.describe {
+  color: var(--color-text-secondary);
+  font-size: var(--font-md);
+
+  @include mobile {
+    font-size: var(--font-md);
+  }
+}
+
+.link {
+  background-color: var(--color-primary);
+  border-radius: var(--space-sm);
+  color: var(--color-bg);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  transition: background-color 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+}

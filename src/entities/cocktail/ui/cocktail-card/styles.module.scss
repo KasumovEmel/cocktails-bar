@@ -1,0 +1,49 @@
+@use '@/app/styles/variables/mixins' as *;
+
+.drink {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+
+  @include mobile {
+    flex-direction: column-reverse;
+  }
+
+  @include tablet {
+    flex-direction: column-reverse;
+  }
+}
+
+.drinkInfo {
+  flex: 1;
+}
+
+.drinkTitle {
+  font-size: var(--space-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.drinkLabel {
+  font-weight: 600;
+  margin-top: var(--space-sm);
+}
+
+.drinkInstructions {
+  line-height: 1.5;
+  margin-top: var(--space-md);
+}
+
+.drinkIngredients {
+  line-height: 1.5;
+  margin-top: var(--space-md);
+}
+
+.drinkImage {
+  border: 1px solid #ccc;
+  border-radius: var(--space-sm);
+  margin-top: var(--space-sm);
+  max-height: var( --image-max-height);
+  max-width: var(--image-max-width);
+  object-fit: cover;
+}

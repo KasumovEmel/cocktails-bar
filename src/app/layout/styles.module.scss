@@ -1,0 +1,27 @@
+@use '@/app/styles/variables/mixins' as *;
+
+.container {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  height: 100dvh;
+  margin: 0 auto;
+  max-width: var(--container-width);
+  overflow: hidden;
+
+  @include mobile {
+    gap: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+}
+
+.content {
+  background-color: var(--color-bg);
+  overflow-y: auto;
+
+  @include mobile {
+    padding: var(--space-sm);
+  }
+}
