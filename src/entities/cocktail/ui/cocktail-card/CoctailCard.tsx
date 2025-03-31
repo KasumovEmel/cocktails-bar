@@ -1,5 +1,8 @@
 import {memo, useMemo} from 'react';
 
+import {useLocation} from 'react-router-dom';
+
+import {BLUE_HASH_MAP} from 'shared/config/bluehash.mock';
 import {Drink} from 'shared/types';
 import {ImageLazy} from 'shared/ui';
 
@@ -10,6 +13,7 @@ type CoctailsCardProps = {
 };
 
 export const CocktailCard = memo(({drink}: CoctailsCardProps) => {
+  const location = useLocation();
   const listOfIngredients = useMemo(
     () =>
       Array.from({length: 15}).reduce((list: [string, string][], _, i) => {
@@ -24,6 +28,10 @@ export const CocktailCard = memo(({drink}: CoctailsCardProps) => {
       }, []),
     []
   );
+
+  const blueHash = useMemo(() => {
+    return BLUE_HASH_MAP[location.pathname][drink.idDrink];
+  }, [drink.idDrink]);
 
   return (
     <div className={styles.drink}>
@@ -62,6 +70,7 @@ export const CocktailCard = memo(({drink}: CoctailsCardProps) => {
       <ImageLazy
         alt={drink.strDrink}
         className={styles.drinkImage}
+        hash={blueHash}
         height={200}
         src={drink.strDrinkThumb}
         width={200}

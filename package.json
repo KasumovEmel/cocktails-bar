@@ -12,8 +12,10 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "blurhash": "^2.0.5",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
+    "react-blurhash": "^0.3.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
     "react-router-dom": "^7.4.0",

@@ -13,6 +13,7 @@ type CocktailPageProps = {
 
 export const CocktailPage = memo(({code}: CocktailPageProps) => {
   const {isLoading, cocktailsList} = useGetCocktails(code);
+
   if (code === CONTENT_NAVIGATION_MENU[2]) {
     throw new Error('Test error ErrorBoundary');
   }
